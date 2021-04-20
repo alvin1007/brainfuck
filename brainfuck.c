@@ -1,7 +1,25 @@
+/* 
+    input : ++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++++++++++++++.------------.<<+++++++++++++++.>.+++.------.--------.>+.
+    output : Hello, World!
+*/
+/*
+    input : ++++++++++[>++++++++>+++++++++>+++>++++>+++>++++++++>+++++++++>+++++++++++>+++++++++++>+++<<<<<<<<<<-]>+++++++.>+++++++.>+++.>++++.>++.>+++.>+++++++.>.>+++++.>+++.
+	output : Wa!, Sans!
+*/
+/*
+	input : ++++++++++[>++++++++++>++++++++++>++++++++++++>++++++++++>+++++++++++>+++++++++++>+++++++++++>++++++++++>+++++++++++<<<<<<<<<-]>.>+.>--.>+.>--.>+.>++.>+.>++++.
+	output : developer
+*/
+/*
+	input : ++++++++++[>++++++++++[>+++<-]>+++.<++++++++++[>---<-]>---<<-]
+	output : !!!!!!!!!!
+*/
+
 #include <stdio.h>
 
 int ascii_char[30000] = { 0 };
 
+void arr(int* pa);
 void transform(char* pc);
 
 int main()
@@ -20,24 +38,38 @@ int main()
 }
 void transform(char* pc)
 {
-	int cnt = 0, cnt_2 = 0, cnt_3 = 0, pos_1, pos_2, i = 0;
+	int cnt = 0, ptr = 0, i = 0, j = 0;
+	int pos_1[1000] = { 0 };
+	int pos_2[1000] = { 0 };
 	int str[30000] = { 0 };
-	int *pr = str;
 
 	while (*pc != '\0')
 	{
 		switch (*pc)
 		{
-		case '+': str[cnt_2] = str[cnt_2] + 1; break;
-		case '-': str[cnt_2] = str[cnt_2] - 1; break;
-		case '>': cnt_2++; break;
-		case '<': cnt_2--; break;
-		case '[': pos_1 = cnt; pos_2 = cnt_2; break;
-		case ']': if (str[cnt_2] != 0) { pc = pc - (cnt - pos_1); cnt_2 = pos_2; cnt = pos_1; }
-				else if (str[cnt_2] == 0) { break; } break;
-		case '.': ascii_char[i] = str[cnt_2]; i++; break;
+		case '+': str[ptr] = str[ptr] + 1; break;
+		case '-': str[ptr] = str[ptr] - 1; break;
+		case '>': ptr++; break;
+		case '<': ptr--; break;
+		case '[': pos_1[j] = cnt; pos_2[j] = ptr; j++; break;
+		case ']': if (str[ptr] != 0) { pc = pc - (cnt - pos_1[j - 1]); cnt = pos_1[j - 1];  ptr = pos_2[j - 1]; }
+				else if (str[ptr] == 0) { arr(pos_2); arr(pos_1); j = j - 1; } break;
+		case '.': ascii_char[i] = str[ptr]; i++; break;
 		}
 		cnt++;
 		pc++;
+	}
+}
+void arr(int* pa)
+{
+	while (*pa != 0)
+	{
+		pa++;
+		if (*pa == 0)
+		{
+			pa--;
+			*pa = 0;
+			break;
+		}
 	}
 }
