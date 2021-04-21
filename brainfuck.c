@@ -34,9 +34,9 @@ void transform(char* pc)
 		case '-': str[ptr] = str[ptr] - 1; break;
 		case '>': ptr++; break;
 		case '<': ptr--; break;
-		case '[': pos_1[j] = cnt; pos_2[j] = ptr; j++; break;
-		case ']': if (str[ptr] != 0) { pc = pc - (cnt - pos_1[j - 1]); cnt = pos_1[j - 1];  ptr = pos_2[j - 1]; }
-				else if (str[ptr] == 0) { arr(pos_2); arr(pos_1); j = j - 1; } break;
+		case '[': pos_1[j] = cnt; j++; break;
+		case ']': if (str[ptr] != 0) { pc = pc - (cnt - pos_1[j - 1]); cnt = pos_1[j - 1]; }
+				else if (str[ptr] == 0) { arr(pos_1); j = j - 1; } break;
 		case '.': ascii_char[i] = str[ptr]; i++; break;
 		}
 		cnt++;
