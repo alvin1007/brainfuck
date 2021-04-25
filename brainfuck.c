@@ -2,7 +2,6 @@
 
 int ascii_char[30000] = { 0 };
 
-void arr(int* pa);
 void transform(char* pc);
 
 int main()
@@ -21,8 +20,7 @@ int main()
 }
 void transform(char* pc)
 {
-	int cnt2, cnt3, ptr = 0, i = 0, j = 0;
-	int pos_1[1000] = { 0 };
+	int cnt1, cnt2, ptr = 0, i = 0, j = 0;
 	int str[30000] = { 0 };
 
 	while (*pc != '\0')
@@ -35,36 +33,36 @@ void transform(char* pc)
 		case '<': ptr--; break;
 		case '[': if (str[ptr] == 0) 
 		{
-			cnt2 = 1;
+			cnt1 = 1;
 			while (1)
 			{
-				if (cnt2 == 0) break;
+				if (cnt1 == 0) break;
 				pc++;
 				if (*pc == '[')
 				{
-					cnt2++;
+					cnt1++;
 				}
 				else if (*pc == ']')
 				{
-					cnt2--;
+					cnt1--;
 				}
 				else continue;
 			}
 		} break;
 		case ']': if (str[ptr] != 0)
 		{
-			cnt3 = 1;
+			cnt2 = 1;
 			while (1)
 			{
-				if (cnt3 == 0) break;
+				if (cnt2 == 0) break;
 				pc--;
 				if (*pc == '[')
 				{
-					cnt3--;
+					cnt2--;
 				}
 				else if (*pc == ']')
 				{
-					cnt3++;
+					cnt2++;
 				}
 				else continue;
 			}
