@@ -38,14 +38,8 @@ void transform(char* pc)
 			{
 				if (cnt1 == 0) break;
 				pc++;
-				if (*pc == '[')
-				{
-					cnt1++;
-				}
-				else if (*pc == ']')
-				{
-					cnt1--;
-				}
+				if (*pc == '[') cnt1++;
+				else if (*pc == ']') cnt1--;
 				else continue;
 			}
 		} break;
@@ -56,14 +50,8 @@ void transform(char* pc)
 			{
 				if (cnt2 == 0) break;
 				pc--;
-				if (*pc == '[')
-				{
-					cnt2--;
-				}
-				else if (*pc == ']')
-				{
-					cnt2++;
-				}
+				if (*pc == '[') cnt2--;
+				else if (*pc == ']') cnt2++;
 				else continue;
 			}
 		} break;
