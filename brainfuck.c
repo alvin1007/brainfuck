@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-int ascii_char[30000] = { 0 };
+unsigned int ascii_char[30000] = { 0 };
 
 void transform(char* pc);
 
 int main()
 {
 	int i = 0;
-	char code[30000];
+	unsigned char code[30000];
 	printf("입력 : ");
 	scanf("%s", code);
 	transform(code);
@@ -21,7 +21,7 @@ int main()
 void transform(char* pc)
 {
 	int cnt1, cnt2, ptr = 0, i = 0, j = 0;
-	int str[30000] = { 0 };
+	unsigned int str[30000] = { 0 };
 
 	while (*pc != '\0')
 	{
